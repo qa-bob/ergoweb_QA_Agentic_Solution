@@ -1,23 +1,28 @@
-﻿{
+{
     "name":  "Ergoweb",
     "url":  "https://ergoweb.com",
-    "description":  "",
-    "industry":  "",
+    "description":  "Ergonomics software and services for the working world — Ergoweb Enterprise™ provides assessment tools, dashboards, and reporting for workplace ergonomics programs.",
+    "industry":  "Ergonomics Software / Workplace Safety",
     "hasContactForm":  true,
     "expectedNavItems":  [
-
-                         ],
+        "Home",
+        "Software",
+        "Ergoweb® Learning Center",
+        "Contact",
+        "About",
+        "Client Login"
+    ],
     "viewports":  [
-                      "desktop",
-                      "mobile",
-                      "tablet"
-                  ],
+        "desktop",
+        "mobile",
+        "tablet"
+    ],
     "skipVisual":  false,
     "skipForms":  false,
     "auth":  {
-                 "required":  false,
-                 "loginUrl":  "",
-                 "username":  "",
-                 "password":  ""
-             }
+        "required":  false,
+        "loginUrl":  "",
+        "username":  "",
+        "password":  ""
+    }
 }

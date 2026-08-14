@@ -1,3 +1,10 @@
+---
+name: test-generator
+description: Generate site-specific Playwright TypeScript test files for a discovered page or feature. Use when a page has unique functionality not covered by the generic test suites, when generating tests for a specific URL path, or when writing regression tests for a newly discovered feature. Writes files to tests/custom/ and updates page objects in src/pages/ as needed.
+model: claude-sonnet-4-6
+tools: WebFetch, Read, Write, Edit, Bash, Glob, Grep
+---
+
 # Agent: test-generator
 
 ## Role
@@ -75,7 +82,6 @@ test.describe('Pricing Page @custom', () => {
   });
 
   test('pricing page loads and has plan options @custom @smoke', async ({ page }) => {
-    // At least one pricing tier should be visible
     const planCards = page.locator('[class*="plan"], [class*="pricing-card"], [class*="tier"]');
     await expect(planCards.first()).toBeVisible({ timeout: 10_000 });
     expect(await planCards.count()).toBeGreaterThan(0);

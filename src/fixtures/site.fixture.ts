@@ -10,10 +10,13 @@
  */
 
 import { test as base, expect } from '@playwright/test';
-import { loadSiteConfig, type SiteConfig } from '@types/site-config.types';
+import { loadSiteConfig, type SiteConfig } from '../types/site-config.types';
 import { HomePage } from '@pages/home.page';
 import { NavigationPage } from '@pages/navigation.page';
 import { ContactFormPage } from '@pages/contact.page';
+import { SoftwarePage } from '@pages/software.page';
+import { LearningCenterPage } from '@pages/learning-center.page';
+import { AboutPage } from '@pages/about.page';
 
 // ── Fixture type definitions ─────────────────────────────────────────────────
 
@@ -26,6 +29,12 @@ export interface Fixtures {
   navigationPage: NavigationPage;
   /** ContactFormPage page object (does not auto-navigate) */
   contactPage: ContactFormPage;
+  /** SoftwarePage page object (does not auto-navigate) */
+  softwarePage: SoftwarePage;
+  /** LearningCenterPage page object (does not auto-navigate) */
+  learningCenterPage: LearningCenterPage;
+  /** AboutPage page object (does not auto-navigate) */
+  aboutPage: AboutPage;
 }
 
 // ── Extended test object ─────────────────────────────────────────────────────
@@ -66,6 +75,33 @@ export const test = base.extend<Fixtures>({
   contactPage: async ({ page, siteConfig }, use) => {
     const contactPage = new ContactFormPage(page, siteConfig);
     await use(contactPage);
+  },
+
+  /**
+   * softwarePage — constructs SoftwarePage without navigating.
+   * Call softwarePage.navigateTo() in your test or beforeEach.
+   */
+  softwarePage: async ({ page, siteConfig }, use) => {
+    const softwarePage = new SoftwarePage(page, siteConfig);
+    await use(softwarePage);
+  },
+
+  /**
+   * learningCenterPage — constructs LearningCenterPage without navigating.
+   * Call learningCenterPage.navigateTo() in your test or beforeEach.
+   */
+  learningCenterPage: async ({ page, siteConfig }, use) => {
+    const learningCenterPage = new LearningCenterPage(page, siteConfig);
+    await use(learningCenterPage);
+  },
+
+  /**
+   * aboutPage — constructs AboutPage without navigating.
+   * Call aboutPage.navigateTo() in your test or beforeEach.
+   */
+  aboutPage: async ({ page, siteConfig }, use) => {
+    const aboutPage = new AboutPage(page, siteConfig);
+    await use(aboutPage);
   },
 });
 

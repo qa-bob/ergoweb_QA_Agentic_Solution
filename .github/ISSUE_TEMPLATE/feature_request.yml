@@ -1,0 +1,59 @@
+name: Feature / Test Coverage Request
+description: Request new test coverage or a framework improvement
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request new test coverage for a page or feature, or to suggest a framework improvement.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      options:
+        - "New test coverage for a page"
+        - "New test coverage for a feature"
+        - "Framework improvement"
+        - "New slash command / skill"
+        - "Page object improvement"
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL (if applicable)
+      placeholder: "e.g. https://ergoweb.com/ergonomics-software/"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should be tested or improved, and why?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this is done?
+      placeholder: |
+        - [ ] Test verifies X is visible
+        - [ ] Test checks Y behavior
+        - [ ] TypeScript compiles cleanly
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "High — blocking QA sign-off"
+        - "Medium — important but not blocking"
+        - "Low — nice to have"
+    validations:
+      required: true

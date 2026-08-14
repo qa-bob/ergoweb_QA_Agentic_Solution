@@ -1,0 +1,91 @@
+name: Bug Report
+description: Report a failing or flaky test
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug report! Please fill in as much detail as possible.
+
+  - type: dropdown
+    id: test-suite
+    attributes:
+      label: Test Suite
+      description: Which test suite contains the failing test?
+      options:
+        - "@smoke"
+        - "@navigation"
+        - "@forms"
+        - "@functional"
+        - "@visual"
+        - "@responsive"
+        - "multiple / unknown"
+    validations:
+      required: true
+
+  - type: input
+    id: test-name
+    attributes:
+      label: Test Name
+      description: The full name of the failing test(s)
+      placeholder: "e.g. Navigation @navigation > all nav links are reachable (no 404s)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser Project
+      options:
+        - "chromium-desktop"
+        - "mobile-chrome"
+        - "tablet"
+        - "all"
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-message
+    attributes:
+      label: Error Message
+      description: Paste the full error message from Playwright
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Run `npm run test:navigation`
+        2. See failure on "all nav links are reachable"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+    validations:
+      required: true
+
+  - type: input
+    id: playwright-version
+    attributes:
+      label: Playwright Version
+      placeholder: "e.g. 1.44.0 (run: npx playwright --version)"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Screenshot, trace file path, or any other context

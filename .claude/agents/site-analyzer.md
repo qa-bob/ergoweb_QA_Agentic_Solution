@@ -1,3 +1,10 @@
+---
+name: site-analyzer
+description: Crawl a live website and produce a fully-populated site.config.json. Use when discovering site structure, refreshing expectedNavItems, checking for contact forms, or onboarding a new site to the framework. Also invoked when running /analyze-site.
+model: claude-sonnet-4-6
+tools: WebFetch, Read, Write, Bash
+---
+
 # Agent: site-analyzer
 
 ## Role
