@@ -141,7 +141,8 @@ test.describe('Software Page @functional', () => {
 
   // ── Responsive heading check ─────────────────────────────────────────────────
 
-  test('software page is responsive at mobile viewport @functional @responsive', async ({ page, siteConfig }) => {
+  test('software page is responsive at mobile viewport @functional @responsive', async ({ page, siteConfig }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile-chrome', 'Runs only in the "mobile-chrome" project');
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(siteConfig.url.replace(/\/$/, '') + '/ergonomics-software/', {
       waitUntil: 'domcontentloaded',
