@@ -44,10 +44,7 @@ test.describe('Homepage Functional @functional', () => {
 
   test('CTA buttons are visible @functional', async ({ homePage }) => {
     const ctaButtons = await homePage.getCTAButtons();
-    if (ctaButtons.length === 0) {
-      console.warn('[homepage] No CTA buttons found — skipping visibility check.');
-      return;
-    }
+    test.skip(ctaButtons.length === 0, 'No CTA buttons found');
     await expect(ctaButtons[0], 'First CTA button should be visible').toBeVisible();
   });
 
@@ -85,7 +82,9 @@ test.describe('Homepage Functional @functional', () => {
 
   // ── Navigation presence ───────────────────────────────────────────────────────
 
-  test('homepage navigation includes Software link @functional', async ({ page, siteConfig }) => {
+  test('homepage navigation includes Software link @functional', async ({ page, siteConfig }, testInfo) => {
+    // Small viewports usually hide the nav behind a toggle — covered by the mobile nav test
+    test.skip(testInfo.project.name !== 'chromium-desktop', 'Runs only in the "chromium-desktop" project');
     await page.goto(siteConfig.url, { waitUntil: 'domcontentloaded' });
     const softwareLink = page.getByRole('link', { name: /software/i }).first();
     await expect(softwareLink, 'Nav should contain a Software link').toBeVisible();
@@ -100,10 +99,7 @@ test.describe('Homepage Functional @functional', () => {
 
   test('homepage footer has privacy policy link @functional', async ({ page }) => {
     const privacyLink = page.getByRole('link', { name: /privacy/i });
-    if (await privacyLink.count() === 0) {
-      console.warn('[homepage] No privacy policy link found in footer.');
-      return;
-    }
+    test.skip(await privacyLink.count() === 0, 'No privacy policy link found in footer');
     await expect(privacyLink.first()).toBeVisible();
   });
 

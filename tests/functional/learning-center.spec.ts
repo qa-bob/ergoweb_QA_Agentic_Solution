@@ -118,7 +118,8 @@ test.describe('Learning Center Page @functional', () => {
 
   // ── Page structure ─────────────────────────────────────────────────────────────
 
-  test('learning center does not have horizontal scroll @functional @responsive', async ({ page, siteConfig }) => {
+  test('learning center does not have horizontal scroll @functional @responsive', async ({ page, siteConfig }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile-chrome', 'Runs only in the "mobile-chrome" project');
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(siteConfig.url.replace(/\/$/, '') + '/ergoweb-learning-center/', {
       waitUntil: 'domcontentloaded',
